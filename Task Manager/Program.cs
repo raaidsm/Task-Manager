@@ -14,8 +14,23 @@ namespace Task_Manager
         private readonly List<Task> _taskList = new List<Task>();
 
         internal void Run() {
-            CreateTasks();
-            DisplayTasks(); }
+            Console.WriteLine("Welcome to Task Manager. It manages your tasks! Duh.");
+            var userInput = "";
+            while (userInput != "Done") {
+                Console.WriteLine("This is the main menu. Type \"Create\" or \"Display\", or \"Done\" to exit.");
+                userInput = Console.ReadLine();
+                switch (userInput) {
+                    case "Create":
+                        CreateTasks();
+                        break;
+                    case "Display":
+                        DisplayTasks();
+                        break;
+                    case "Done":
+                        break;
+                    default:
+                        Console.WriteLine("Sorry, that's not a valid entry");
+                        break; } } }
 
         private void CreateTasks() {
             Console.WriteLine("Enter names of tasks you wish to create. Type \"Done\" to exit: ");
