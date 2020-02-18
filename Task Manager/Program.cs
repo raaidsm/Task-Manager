@@ -44,11 +44,14 @@ namespace Task_Manager
         private void DisplayTasks() {
             var length = _taskList.Count;
             foreach (var task in _taskList) {
-                Console.Write(task.Name);
+                Console.Write(task.GetName());
                 if (0 < --length) {
                     Console.Write(", "); } } } }
-    internal class Task {
-        internal readonly string Name;
+    internal struct Task {
+        private readonly string _name;
         public Task(string nameArg) {
-            Name = nameArg; } }
+            _name = nameArg; }
+
+        public string GetName() { return _name; }
+    }
 }
