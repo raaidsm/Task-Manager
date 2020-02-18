@@ -10,8 +10,10 @@ namespace Task_Manager
             var taskMan = new TaskManager();
             taskMan.Run(); } }
 
-    internal class TaskManager {
-        private readonly List<Task> _taskList = new List<Task>();
+    public class TaskManager {
+        private readonly List<Task> _taskList;
+        public TaskManager() {
+            _taskList = new List<Task>(); }
 
         internal void Run() {
             Console.WriteLine("Welcome to Task Manager. It manages your tasks! Duh.");
