@@ -15,7 +15,7 @@ namespace Task_Manager
         public TaskManager() {
             _taskList = new List<Task>(); }
 
-        internal void Run() {
+        public void Run() {
             Console.WriteLine("Welcome to Task Manager. It manages your tasks! Duh.");
             var userInput = "";
             while (userInput != "Done") {
@@ -31,7 +31,7 @@ namespace Task_Manager
                     case "Done":
                         break;
                     default:
-                        Console.WriteLine("Sorry, that's not a valid entry");
+                        Console.WriteLine("Sorry, that's not a valid entry.");
                         break; } } }
 
         private void CreateTasks() {
@@ -43,15 +43,21 @@ namespace Task_Manager
 
         private void DisplayTasks() {
             var length = _taskList.Count;
+            NothingToDisplay(length);
             foreach (var task in _taskList) {
-                Console.Write(task.GetName());
+                Console.Write(task.Name);
                 if (0 < --length) {
-                    Console.Write(", "); } } } }
-    internal struct Task {
+                    Console.Write(", "); } } }
+
+        private void NothingToDisplay(int length) {
+            if (length == 0) {
+                Console.WriteLine("Nothing to see here."); } } }
+
+    internal class Task {
         private readonly string _name;
         public Task(string nameArg) {
             _name = nameArg; }
 
-        public string GetName() { return _name; }
-    }
+        public string Name
+        { get { return _name; } } }
 }
